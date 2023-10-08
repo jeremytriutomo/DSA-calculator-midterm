@@ -121,7 +121,7 @@ private:
     double result;
 
 public:
-    void set_value(double operand_1, char operators, double operand_2) // assigning the values
+    void set_value(double operand_1 = 0, char operators = 'a', double operand_2 = 0) // assigning the values
     {
         operand1 = operand_1;
         ops = operators;
