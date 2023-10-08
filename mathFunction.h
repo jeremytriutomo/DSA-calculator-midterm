@@ -108,3 +108,92 @@ public:
     }
 };
 //=======================================MATH FUNCTIONS=======================================
+
+//=======================================TERM CLASS===========================================
+class Terms
+{
+    MathFunctions calculate;
+
+private:
+    double operand1;
+    string ops;
+    double operand2;
+    double result;
+
+public:
+    void set_value(double operand_1, char operators, double operand_2) // assigning the values
+    {
+        operand1 = operand_1;
+        ops = operators;
+        operand2 = operand_2;
+
+        calculate.value = operand1;
+    }
+
+    double set_result()
+    {
+
+        if (ops == "+")
+        {
+            result = calculate.addition(operand2);
+        }
+
+        else if (ops == "-")
+        {
+            result = calculate.subtraction(operand2);
+        }
+
+        else if (ops == "/")
+        {
+            result = calculate.division(operand2);
+        }
+
+        else if (ops == "*")
+        {
+            result = calculate.multiplication(operand2);
+        }
+
+        else if (ops == "S" || ops == "s")
+        {
+            result = calculate.sine();
+        }
+
+        else if (ops == "C" || ops == "c")
+        {
+            result = calculate.cosine();
+        }
+
+        else if (ops == "T" || ops == "t")
+        {
+            result = calculate.tangent();
+        }
+
+        else if (ops == "L" || ops == "l")
+        {
+            result = calculate.logarithm();
+        }
+
+        else if (ops == "N" || ops == "n")
+        {
+            result = calculate.naturalLogarithm();
+        }
+
+        else if (ops == "R" || ops == "r")
+        {
+            result = calculate.squareRoot();
+        }
+
+        else if (ops == "^")
+        {
+            result = calculate.exponential();
+        }
+
+        return result;
+    }
+
+    void get_result() // printing result
+    {
+        cout << operand1 << " " << ops << " " << operand2 << " = " << result;
+    }
+};
+//=======================================TERM CLASS===========================================
