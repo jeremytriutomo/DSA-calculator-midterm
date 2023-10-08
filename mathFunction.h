@@ -197,3 +197,72 @@ public:
     }
 };
 //=======================================TERM CLASS===========================================
+
+//=======================================LINKED LIST=======================================
+struct Node
+{
+    Terms *data; // Each node stores a pointer to a Terms object
+    Node *next;  // Each node stores a pointer to the next node in the list
+
+    Node(double operand1, char ops, double operand2, double result) : next(nullptr)
+    {
+        data = new Terms();                       // Create a new Terms object and initialize the Node's data member
+        data->set_value(operand1, ops, operand2); // Set the values of the Terms object
+        data->set_result();                       // Calculate the result of the Terms object
+    }
+};
+
+class LinkedList
+{
+private:
+    Node *head; // The head points to the first node in the linked list
+
+public:
+    LinkedList() : head(nullptr) {} // Constructor to initialize the linked list with a null head pointer
+
+    void insert(double operand1, char ops, double operand2, double result)
+    {
+        Node *newNode = new Node(operand1, ops, operand2, result); // Create a new Node to add the calculated result to the linked list
+
+        if (!head) // If the list is empty, set the new node as the head
+        {
+            head = newNode;
+        }
+        else
+        {
+            Node *current = head;
+            while (current->next) // Iterate through the list to find the last node
+            {
+                current = current->next;
+            }
+            current->next = newNode; // Add the new node to the end of the list
+        }
+    }
+
+    void showHistory()
+    {
+        Node *current = head;
+
+        while (current) // Iterate through the list and display the history of operations
+        {
+            current->data->get_result();
+            current = current->next;
+        }
+        cout << endl;
+    }
+
+    void deleteHistory()
+    {
+        Node *current = head;
+
+        while (current != nullptr) // Iterate through the list and delete each node and its data
+        {
+            Node *next = current->next;
+            delete current->data;
+            delete current;
+            current = next;
+        }
+        head = nullptr; // Set the head to null to indicate an empty list
+    }
+};
+//=======================================LINKED LIST=======================================
