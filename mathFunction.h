@@ -239,6 +239,12 @@ public:
         }
         cout << endl;
     }
+
+    double return_result()
+    {
+        Node *current = head;
+        return current->data;
+    }
 };
 
 //=======================================LINKED LIST=======================================

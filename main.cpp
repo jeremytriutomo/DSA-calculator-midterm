@@ -28,7 +28,7 @@ int main()
     cout << "Logarithm: L" << endl;
     cout << "Natural Logarithm: N" << endl;
     cout << "Press H and Enter if you want to display history" << endl;
-    cout << "Enter \"0X0\" and Enter if you want to EXIT" << endl;
+    cout << "Enter \"X0\" and Enter if you want to EXIT" << endl;
     cout << "================================" << endl;
 
     LinkedList history;
@@ -49,8 +49,9 @@ int main()
 
     while (counter = 1)
     {
-        cout << "\nEnter your calculation:";
-        cin >> user_operand1 >> user_operator >> user_operand2;
+        user_operand1 = history.return_result();
+        cout << "\nEnter your calculation: " << user_operand1 << " ";
+        cin >> user_operator >> user_operand2;
 
         // cout << "\nTesting parsing: " << endl;
         // cout << user_operand1 << endl;
@@ -63,10 +64,14 @@ int main()
         }
         else
         {
-            Terms term1;
-            term1.set_value(user_operand1, user_operator, user_operand2);
-            term1.set_result();
-            term1.get_result();
+            Terms term2;
+            term2.set_value(user_operand1, user_operator, user_operand2);
+            term2.set_result();
+            term2.get_result();
+
+            history.insert(term2.result);
+            cout << "\n Printing the list: " << endl;
+            history.print();
         }
     }
 }
