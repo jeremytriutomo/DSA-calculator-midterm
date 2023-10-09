@@ -31,6 +31,20 @@ int main()
     cout << "Enter \"0X0\" and Enter if you want to EXIT" << endl;
     cout << "================================" << endl;
 
+    LinkedList history;
+
+    cout << "\nEnter your calculation:";
+    cin >> user_operand1 >> user_operator >> user_operand2;
+
+    Terms term1;
+    term1.set_value(user_operand1, user_operator, user_operand2);
+    term1.set_result();
+    term1.get_result();
+
+    history.insert(term1.result);
+    cout << "\n Printing the list: " << endl;
+    history.print();
+
     int counter = 1;
 
     while (counter = 1)

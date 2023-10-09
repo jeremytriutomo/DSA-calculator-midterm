@@ -118,10 +118,12 @@ private:
     double operand1;
     string ops;
     double operand2;
-    double result;
+    // double result;
 
 public:
-    void set_value(double operand_1 = 0, char operators = 'a', double operand_2 = 0) // assigning the values
+    double result;
+
+    void set_value(double operand_1, char operators, double operand_2) // assigning the values
     {
         operand1 = operand_1;
         ops = operators;
@@ -199,70 +201,44 @@ public:
 //=======================================TERM CLASS===========================================
 
 //=======================================LINKED LIST=======================================
-struct Node
+class Node
 {
-    Terms *data; // Each node stores a pointer to a Terms object
-    Node *next;  // Each node stores a pointer to the next node in the list
+public:
+    double data;
 
-    Node(double operand1, char ops, double operand2, double result) : next(nullptr)
-    {
-        data = new Terms();                       // Create a new Terms object and initialize the Node's data member
-        data->set_value(operand1, ops, operand2); // Set the values of the Terms object
-        data->set_result();                       // Calculate the result of the Terms object
-    }
+    Node *next;
+
+    Node(double user_result) : data(user_result), next(nullptr) {}
 };
 
 class LinkedList
 {
-private:
-    Node *head; // The head points to the first node in the linked list
-
 public:
-    LinkedList() : head(nullptr) {} // Constructor to initialize the linked list with a null head pointer
+    Node *head;
 
-    void insert(double operand1, char ops, double operand2, double result)
+    LinkedList() : head(nullptr) {}
+
+    // Function that allows the program to store Term inside the list
+    void insert(double user_input_term)
     {
-        Node *newNode = new Node(operand1, ops, operand2, result); // Create a new Node to add the calculated result to the linked list
-
-        if (!head) // If the list is empty, set the new node as the head
-        {
-            head = newNode;
-        }
-        else
-        {
-            Node *current = head;
-            while (current->next) // Iterate through the list to find the last node
-            {
-                current = current->next;
-            }
-            current->next = newNode; // Add the new node to the end of the list
-        }
+        Node *newNode = new Node(user_input_term);
+        newNode->next = head;
+        head = newNode;
     }
 
-    void showHistory()
+    void print()
     {
         Node *current = head;
-
-        while (current) // Iterate through the list and display the history of operations
+        while (current != nullptr)
         {
-            current->data->get_result();
+            cout << "===========" << endl;
+            cout << "|";
+            cout << current->data << endl;
+            cout << "===========" << endl;
             current = current->next;
         }
         cout << endl;
     }
-
-    void deleteHistory()
-    {
-        Node *current = head;
-
-        while (current != nullptr) // Iterate through the list and delete each node and its data
-        {
-            Node *next = current->next;
-            delete current->data;
-            delete current;
-            current = next;
-        }
-        head = nullptr; // Set the head to null to indicate an empty list
-    }
 };
+
 //=======================================LINKED LIST=======================================
