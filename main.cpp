@@ -26,6 +26,7 @@ int main()
     cout << "Tangent: T" << endl;
     cout << "Square Root: R" << endl;
     cout << "Logarithm: L" << endl;
+    cout << "Exponent: ^" << endl;
     cout << "Natural Logarithm: N" << endl;
     cout << "================================" << endl;
 
