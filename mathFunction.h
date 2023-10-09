@@ -229,13 +229,15 @@ public:
     void print()
     {
         Node *current = head;
+        int index = 0;
         while (current != nullptr)
         {
             cout << "===========" << endl;
-            cout << "|";
+            cout << "|" << index << "|";
             cout << current->data << endl;
             cout << "===========" << endl;
             current = current->next;
+            index++;
         }
         cout << endl;
     }
@@ -244,6 +246,16 @@ public:
     {
         Node *current = head;
         return current->data;
+    }
+
+    void clear()
+    {
+        while (head != nullptr)
+        {
+            Node *temp = head;
+            head = head->next;
+            delete temp;
+        }
     }
 };
 
