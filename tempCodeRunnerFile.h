@@ -12,7 +12,6 @@ public:
     // Calculate the sine of the value stored in 'value'.
     double sine(double operand)
     {
-
         return value * sin(operand);
     }
 
@@ -35,7 +34,7 @@ public:
     }
 
     // Calculate the square root of the value stored in 'value'.
-    double squareRoot(double operand)
+    double squareRoot()
     {
         // Add special handling for negative values.
         if (value < 0)
@@ -43,7 +42,7 @@ public:
             std::cout << "sqrt(" << value << ") is not defined for negative numbers." << std::endl;
             throw std::invalid_argument("sqrt()");
         }
-        return value * sqrt(operand);
+        return sqrt(value);
     }
 
     // Calculate the exponential (e^x) of the value stored in 'value'.
@@ -53,7 +52,7 @@ public:
     }
 
     // Calculate the base 10 logarithm of the value stored in 'value'.
-    double logarithm(double operand)
+    double logarithm()
     {
         // Add special handling for non-positive values.
         if (value <= 0)
@@ -61,7 +60,7 @@ public:
             std::cout << "log(" << value << ") is not defined for non-positive numbers." << std::endl;
             throw std::invalid_argument("log()");
         }
-        return value * log10(operand);
+        return log10(value);
     }
 
     // Calculate the natural logarithm (ln) of the value stored in 'value'.
@@ -173,7 +172,7 @@ public:
 
         else if (ops == "L" || ops == "l")
         {
-            result = calculate.logarithm(operand2);
+            result = calculate.logarithm();
         }
 
         else if (ops == "N" || ops == "n")
@@ -183,7 +182,7 @@ public:
 
         else if (ops == "R" || ops == "r")
         {
-            result = calculate.squareRoot(operand2);
+            result = calculate.squareRoot();
         }
 
         else if (ops == "^")
