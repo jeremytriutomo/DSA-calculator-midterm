@@ -10,19 +10,20 @@ class MathFunctions
 public:
     double value;
     // Calculate the sine of the value stored in 'value'.
-    double sine()
+    double sine(double operand)
     {
-        return sin(value);
+        
+        return value * sin(operand);
     }
 
     // Calculate the cosine of the value stored in 'value'.
-    double cosine()
+    double cosine(double operand)
     {
-        return cos(value);
+        return value * cos(operand);
     }
 
     // Calculate the tangent of the value stored in 'value'.
-    double tangent()
+    double tangent(double operand)
     {
         // Add special handling if cos(value) == 0.
         if (cos(value) == 0)
@@ -30,7 +31,7 @@ public:
             std::cout << "tan(" << value << ") is not defined." << std::endl;
             throw std::invalid_argument("tan()");
         }
-        return tan(value);
+        return value * tan(operand);
     }
 
     // Calculate the square root of the value stored in 'value'.
@@ -157,17 +158,17 @@ public:
 
         else if (ops == "S" || ops == "s")
         {
-            result = calculate.sine();
+            result = calculate.sine(operand2);
         }
 
         else if (ops == "C" || ops == "c")
         {
-            result = calculate.cosine();
+            result = calculate.cosine(operand2);
         }
 
         else if (ops == "T" || ops == "t")
         {
-            result = calculate.tangent();
+            result = calculate.tangent(operand2);
         }
 
         else if (ops == "L" || ops == "l")
