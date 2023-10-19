@@ -47,9 +47,9 @@ public:
     }
 
     // Calculate the exponential (e^x) of the value stored in 'value'.
-    double exponential()
+    double exponential(double operand)
     {
-        return exp(value);
+        return pow(value, operand);
     }
 
     // Calculate the base 10 logarithm of the value stored in 'value'.
@@ -188,7 +188,7 @@ public:
 
         else if (ops == "^")
         {
-            result = calculate.exponential();
+            result = calculate.exponential(operand2);
         }
 
         return result;

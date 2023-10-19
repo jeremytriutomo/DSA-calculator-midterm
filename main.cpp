@@ -84,6 +84,7 @@ int main()
                     char user_history_input;
                     cin >> user_history_input;
                     if (user_history_input == 'D' || user_history_input == 'd')
+
                     {
                         history.clear();
                         break;
